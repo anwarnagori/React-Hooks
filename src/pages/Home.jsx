@@ -3,10 +3,12 @@ import SearchParams from "../components/SearchParams";
 
 const Home = () => {
   return (
+    <>
+    <h1>Adopt me</h1>
     <div>
-      <h1>Hello React Hooks!</h1>
       <SearchParams />
     </div>
+    </>
   );
 };
 
