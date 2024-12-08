@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Pet from "./Pet";
 const ANIMALS = ["Select an Option", "bird", "cat", "dog", "rabbit", "reptile"];
 // const breeds = ["", "Buldoog", "husky"];
 const breedsData = [
@@ -37,10 +38,10 @@ function SearchParams() {
 
   useEffect(() => {
     fetchPets();
-  }, []);
+  }, [animal]);
 
   async function fetchPets() {
-    const response = await fetch("http://pets-v2.dev-apis.com/pets");
+    const response = await fetch(`http://pets-v2.dev-apis.com/pets?animal=${animal}`);
     const data = await response.json();
     setPets(data.pets);
     console.log(data);
@@ -123,12 +124,15 @@ function SearchParams() {
       </form>
       <div className="search">
         {
-          pets.map((item, index) => {
+          pets.map((data, index) => {
              return (
-              <div className="info">
-              <h1>{item.name}</h1>
-              <h2>{`${item.animal} — ${item.breed} — ${item.state}`}</h2>
-            </div>
+            //   <div className="pet">
+            //   <div className="info">
+            //   <h1>{item.name}</h1>
+            //   <h2>{`${item.animal} — ${item.breed} — ${item.state}`}</h2>
+            // </div>
+            // </div>
+            <Pet item={data}/>
              )
           })
         }
