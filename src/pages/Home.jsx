@@ -1,15 +1,14 @@
 import React from "react";
 import SearchParams from "../components/SearchParams";
-
-const Home = () => {
+function Home() {
   return (
     <>
-      <h1>Adopt me</h1>
       <div>
+      <h1>Adopt me!</h1>
         <SearchParams />
       </div>
     </>
   );
-};
+}
 
 export default Home;

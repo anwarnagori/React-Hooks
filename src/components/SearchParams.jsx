@@ -65,6 +65,10 @@ function SearchParams() {
       setSelectedBreeds([]);
     }
   };
+  console.log("location", location);
+  console.log("animal", animal);
+  console.log("breed", breed);
+  console.log("pets", pets);
   return (
     <div className="search-params">
       <form>
@@ -118,13 +122,19 @@ function SearchParams() {
         <button>Submit</button>
       </form>
       <div className="search">
-        <div className="info">
-          <h1>{"Luna"}</h1>
-          <h2>{`${"dog"} — ${"animal"} — ${"US"}`}</h2>
-        </div>
+        {
+          pets.map((item, index) => {
+             return (
+              <div className="info">
+              <h1>{item.name}</h1>
+              <h2>{`${item.animal} — ${item.breed} — ${item.state}`}</h2>
+            </div>
+             )
+          })
+        }
       </div>
     </div>
-  )
+  );
 }
 
 export default SearchParams;
