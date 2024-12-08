@@ -125,6 +125,6 @@ function SearchParams() {
       </div>
     </div>
   )
-};
+}
 
 export default SearchParams;
