@@ -4,7 +4,7 @@ function Home() {
   return (
     <>
       <div>
-      <h1>Adopt me!</h1>
+        <h1>Adopt me!</h1>
         <SearchParams />
       </div>
     </>
