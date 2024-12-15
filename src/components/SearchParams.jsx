@@ -40,7 +40,7 @@ function SearchParams() {
 
   useEffect(() => {
     fetchPets();
-  }, [animal, location, breed]);
+  }, []);
 
   async function fetchPets() {
     const response = await fetch(
@@ -77,7 +77,12 @@ function SearchParams() {
   console.log("breeds", breeds);
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          fetchPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -108,9 +113,7 @@ function SearchParams() {
             <option value="cat">Cat</option> */}
           </select>
           <label htmlFor="breed">
-            {
-              status === "loading" ? "Loading...": "Breed"
-            }
+            {status === "loading" ? "Loading..." : "Breed"}
             <select
               disabled={!breeds.length}
               id="breed"
@@ -127,7 +130,7 @@ function SearchParams() {
             </select>
           </label>
         </label>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
       <div className="search">
         {pets.map((data, index) => {
