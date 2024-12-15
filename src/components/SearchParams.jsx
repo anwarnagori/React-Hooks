@@ -33,7 +33,7 @@ function SearchParams() {
   const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   // const [selectedBreeds, setSelectedBreeds] = useState([]);
-  const [breeds] = useBreedList(animal);
+  const [breeds, status] = useBreedList(animal);
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
   //   let location = "Seattle, WA";
@@ -108,7 +108,9 @@ function SearchParams() {
             <option value="cat">Cat</option> */}
           </select>
           <label htmlFor="breed">
-            Breed
+            {
+              status === "loading" ? "Loading...": "Breed"
+            }
             <select
               disabled={!breeds.length}
               id="breed"
