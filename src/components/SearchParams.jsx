@@ -1,43 +1,14 @@
 import { useState, useEffect } from "react";
 import useBreedList from "../hooks/useBreedList";
 import Pet from "./Pet";
+import Results from "./Results";
 const ANIMALS = ["Select an Option", "bird", "cat", "dog", "rabbit", "reptile"];
-// const breeds = ["", "Buldoog", "husky"];
-// const breedsData = [
-//   {
-//     animal: 0,
-//     breedName: "Select an Option",
-//   },
-//   {
-//     animal: 1,
-//     breedName: "german sheperd",
-//   },
-//   {
-//     animal: 1,
-//     breedName: "Havanese",
-//   },
-//   {
-//     animal: 2,
-//     breedName: "Persian",
-//   },
-//   {
-//     animal: 2,
-//     breedName: "russian",
-//   },
-//   {
-//     animal: 3,
-//     breedName: "paramount",
-//   },
-// ];
 function SearchParams() {
   const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
-  // const [selectedBreeds, setSelectedBreeds] = useState([]);
   const [breeds, status] = useBreedList(animal);
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
-  //   let location = "Seattle, WA";
-
   useEffect(() => {
     fetchPets();
   }, []);
@@ -58,17 +29,7 @@ function SearchParams() {
   const handleAnimalChange = (e) => {
     console.log("e", e);
     let value = e.target.value;
-    setAnimal(value);
-
-    // if (value === "dog") {
-    //   let filterData = breedsData.filter((item) => item.animal === 1);
-    //   setSelectedBreeds(filterData);
-    // } else if (value === "cat") {
-    //   let filterData = breedsData.filter((item) => item.animal === 2);
-    //   setSelectedBreeds(filterData);
-    // } else {
-    //   setSelectedBreeds([]);
-    // }
+    setAnimal(value)
   };
   console.log("location", location);
   console.log("animal", animal);
@@ -109,8 +70,6 @@ function SearchParams() {
                 </option>
               );
             })}
-            {/* <option value="bird">Bird</option>
-            <option value="cat">Cat</option> */}
           </select>
           <label htmlFor="breed">
             {status === "loading" ? "Loading..." : "Breed"}
@@ -132,11 +91,7 @@ function SearchParams() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <div className="search">
-        {pets.map((data, index) => {
-          return <Pet item={data} />;
-        })}
-      </div>
+      <Results pets={pets} />
     </div>
   );
 }

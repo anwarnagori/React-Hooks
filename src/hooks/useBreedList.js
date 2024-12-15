@@ -8,11 +8,9 @@ function useBreedList(animal) {
   useEffect(() => {
     if (!animal) {
       setBreedList([]);
-    }
-    else if(localCache[animal]) {
+    } else if (localCache[animal]) {
       setBreedList(localCache[animal]);
-    }
-    else {
+    } else {
       requestBreedList();
     }
   }, [animal]);
